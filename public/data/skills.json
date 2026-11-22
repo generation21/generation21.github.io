@@ -12,7 +12,15 @@
         "descriptions": [
             "딥러닝 모델 구현에 PyTorch를 능숙하게 사용하며, 이를 통해 효율적인 모델 개발을 할 수 있습니다.",
             "PyTorch를 이용하여 기본 모델 외에도 사용자 정의 모델을 만들어내는 능력을 보유하고 있습니다.",
-            "PyTorch의 다양한 최적화 기법을 활용하여 모델의 성능을 향상시키는 데 경험이 있습니다."
+            "SDXL-LCM·Wan2.1 학습과 BiRefNet fine-tuning으로 생성·배경 제거 모델을 서비스에 출시한 경험이 있습니다."
+        ]
+    },
+    {
+        "title": "LLM",
+        "descriptions": [
+            "OpenAI·Gemini·Anthropic API와 Structured Output으로 대화 분석 보고서, 대화 기억 등 LLM 캐릭터 대화 서비스를 개발했습니다.",
+            "키워드·스토리 구간·호감도 등 캐릭터 상태에 맞는 설정만 프롬프트에 넣는 컨텍스트 조건 엔진을 구현했습니다.",
+            "캐릭터 일치 평가표로 대화 모델 6종의 성능·가격을 비교하고, 빈 응답·429·응답 유실 등 LLM API 실패를 처리했습니다."
         ]
     },
     {
@@ -21,6 +29,30 @@
             "RESTful API 개발에 능숙하며, FastAPI의 비동기 기능을 활용하여 서비스를 최적화하는 데 경험이 있습니다.",
             "FastAPI 프레임워크를 이용하여 빠르고 효율적으로 백엔드 서비스를 구현하는 데 능숙합니다.",
             "FastAPI의 스웨거와 레드록을 활용한 API 문서화 및 자동화 경험이 있습니다."
+        ]
+    },
+    {
+        "title": "Unity",
+        "descriptions": [
+            "LLM 캐릭터 대화형 모바일 게임 2종의 Unity(C#) 클라이언트를 개발하고 출시 이후 업데이트를 이어 왔습니다.",
+            "상용 머지 퍼즐 툴킷 위에 생성기·부스터 규칙과 자동 합성 기능을 추가했습니다.",
+            "빌드·다국어 릴리스 노트를 맡고 Crashlytics 크래시를 분석해 수정했습니다."
+        ]
+    },
+    {
+        "title": "Flutter/Firebase",
+        "descriptions": [
+            "Flutter·Flame 클라이언트와 Python Cloud Functions, Firestore 보안 규칙으로 물리 머지 퍼즐 게임을 저장소부터 직접 만들었습니다.",
+            "서버 발급 세션·멱등 처리·트랜잭션으로 재화를 서버만 지급하도록 설계했습니다.",
+            "AdMob 리워드 광고의 SSV 서버 검증을 구현했습니다."
+        ]
+    },
+    {
+        "title": "Cloud/MLOps",
+        "descriptions": [
+            "Azure Functions·Cosmos DB·Blob Storage를 Bicep으로 정의해 사내 생성형 AI 플랫폼을 배포하고, 온프레미스 GPU 워커와 연결했습니다.",
+            "gRPC와 비동기 큐로 AWS EKS에서 Docker Job을 생성하고 Karpenter로 노드를 자동 확장하는 실행 인프라를 구축했습니다.",
+            "GPU 워커를 Docker 이미지로 Runpod에 옮기고 워커 재시작 조건 추가와 재시작 실패를 수정했습니다."
         ]
     },
     {
@@ -41,7 +73,7 @@
     {
         "title": "React",
         "descriptions": [
-            "React를 활용하여 유연하고 재사용 가능한 컴포넌트를 만드는 데 능숙합니다.",
+            "React(TypeScript)로 사내 생성형 AI 플랫폼의 웹 UI를 개발했으며, 재사용 가능한 컴포넌트를 만드는 데 능숙합니다.",
             "Zustand를 사용하여 애플리케이션 상태 관리에 능숙합니다.",
             "RESTful API을 활용하여 서버와 효과적으로 통신하고, 데이터를 능숙하게 관리합니다."
         ]
@@ -51,6 +83,14 @@
         "descriptions": [
             "GitHub를 이용한 협업 프로젝트에서 효과적인 코드 리뷰와 합병 요청을 수행합니다.",
             "git branch, merge, rebase 등을 사용하여 안전하고 체계적인 코드 개발 환경을 유지합니다."
+        ]
+    },
+    {
+        "title": "AI Coding Agent",
+        "descriptions": [
+            "Claude Code(Skills·Hooks·MCP)·Codex·GitHub Copilot으로 개발합니다.",
+            "이슈마다 Git worktree를 나눠 에이전트 세션을 돌리고, 에이전트가 올린 PR을 리뷰·검증해 통합합니다.",
+            "세션 종료 훅으로 개발 기록을 Notion에 자동으로 남깁니다."
         ]
     }
 ]

@@ -3,8 +3,9 @@ import SkillCard from "src/pages/About/SkillCard";
 import { AiOutlineHtml5, AiFillGithub } from "react-icons/ai";
 import { BiLogoReact } from "react-icons/bi";
 import { FaPython } from "react-icons/fa";
-import { TbBrandJavascript } from "react-icons/tb";
-import { SiPytorch, SiFastapi } from "react-icons/si";
+import { TbBrandJavascript, TbRobot, TbCloud } from "react-icons/tb";
+import { SiPytorch, SiFastapi, SiUnity, SiFlutter } from "react-icons/si";
+import { RiOpenaiFill } from "react-icons/ri";
 import styles from "src/styles/About.module.css";
 import axios from "axios";
 import Experience from "src/pages/About/Experience";
@@ -20,6 +21,11 @@ export default function About() {
         Javascript: <TbBrandJavascript />,
         React: <BiLogoReact />,
         "Git/Github": <AiFillGithub />,
+        LLM: <RiOpenaiFill />,
+        Unity: <SiUnity />,
+        "Flutter/Firebase": <SiFlutter />,
+        "Cloud/MLOps": <TbCloud />,
+        "AI Coding Agent": <TbRobot />,
     };
     useEffect(() => {
         axios

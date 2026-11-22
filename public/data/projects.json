@@ -1,5 +1,171 @@
 [
     {
+        "title": "「신이 쌓는 세계」 Flutter·Firebase 퍼즐 게임",
+        "time": "2026.6 - 2026.11",
+        "task": "Flutter·Firebase 게임 & AI 코딩 에이전트 병렬 개발",
+        "image": "image/project/game/god-builds-world.svg",
+        "teckStack": [
+            "flutter",
+            "flame",
+            "firebase",
+            "python",
+            "AdMob SSV",
+            "claude code"
+        ],
+        "from": "dobby canvas",
+        "category": "Game"
+    },
+    {
+        "title": "모바일 게임 릴리스·장애 대응",
+        "time": "2026.10 - 2026.11",
+        "task": "Unity 빌드·릴리스 노트·크래시/502 수정",
+        "image": "image/project/game/mobile-release.svg",
+        "teckStack": ["unity", "crashlytics", "uvicorn", "AWS ALB"],
+        "from": "dobby canvas",
+        "category": "Game"
+    },
+    {
+        "title": "LLM 캐릭터 대화 모델 평가",
+        "time": "2026.4 - 2026.10",
+        "task": "대화 모델 6종 비교 & 대화 평가 파이프라인",
+        "image": "image/project/llm-service/llm-evaluation.svg",
+        "teckStack": ["LLM evaluation", "claude", "gemini", "openai"],
+        "from": "dobby canvas",
+        "category": "LLM-Service"
+    },
+    {
+        "title": "캐릭터 영상 배경 제거",
+        "time": "2026.3 - 2026.11",
+        "task": "BiRefNet fine-tuning & matting",
+        "image": "image/project/ai-research/background-removal.svg",
+        "teckStack": ["pytorch", "BiRefNet", "ToonOut", "chroma key"],
+        "from": "dobby canvas",
+        "category": "AI-Research"
+    },
+    {
+        "title": "「비정규직 황후」 대화 기능·로어북 파이프라인",
+        "time": "2026.3 - 2026.10",
+        "task": "LLM 대화 기능 이식 & 로어북 데이터 생성",
+        "image": "image/project/game/empress.svg",
+        "teckStack": ["unity", "gemini", "google sheets", "postgreSQL"],
+        "from": "dobby canvas",
+        "category": "Game"
+    },
+    {
+        "title": "사내 생성형 AI 플랫폼",
+        "time": "2026.1 - 2026.11",
+        "task": "기획·아트팀용 이미지·영상 생성 도구",
+        "image": "image/project/ai-serving/asset-studio.svg",
+        "teckStack": [
+            "react",
+            "typescript",
+            "azure functions",
+            "cosmos DB",
+            "bicep",
+            "comfyUI"
+        ],
+        "from": "dobby canvas",
+        "category": "AI-Serving"
+    },
+    {
+        "title": "캐릭터 TTS 학습·다국어 음성 생성",
+        "time": "2025.9 - 2026.6",
+        "task": "Character Text to Speech",
+        "image": "image/project/ai-research/character-tts.svg",
+        "teckStack": ["GPT-SoVITS", "Qwen3-TTS", "pytorch"],
+        "from": "dobby canvas",
+        "category": "AI-Research"
+    },
+    {
+        "title": "게임 선물 이미지 생성 워커",
+        "time": "2025.8 - 2026.11",
+        "task": "선물하기 캐릭터 이미지 생성 job",
+        "image": "image/project/ai-serving/gift-image-worker.svg",
+        "teckStack": [
+            "comfyUI",
+            "LoRA",
+            "Qwen Image Edit",
+            "Z-Image-Turbo",
+            "OpenAI moderation"
+        ],
+        "from": "dobby canvas",
+        "category": "AI-Serving"
+    },
+    {
+        "title": "생성 모델 학습·출시와 GPU 워커 운영",
+        "time": "2025.5 - 2026.6",
+        "task": "Wan2.1·SDXL-LCM 학습 & Runpod 워커",
+        "image": "image/project/ai-serving/model-training-serving.svg",
+        "teckStack": ["Wan2.1", "SDXL-LCM", "docker", "runpod", "S3"],
+        "from": "dobby canvas",
+        "category": "AI-Serving"
+    },
+    {
+        "title": "LLM 캐릭터 대화 서비스",
+        "time": "2025.1 - 2026.11",
+        "task": "대화 분석 보고서·컨텍스트 조건 엔진·영상 편지",
+        "image": "image/project/llm-service/character-chat.svg",
+        "teckStack": [
+            "structured output",
+            "opensearch",
+            "postgreSQL",
+            "gemini",
+            "openai",
+            "anthropic"
+        ],
+        "from": "dobby canvas",
+        "category": "LLM-Service"
+    },
+    {
+        "title": "「멸망한 세계의 신이 되었다」 Unity 게임",
+        "time": "2025.1 - 2026.11",
+        "task": "LLM 캐릭터 대화형 모바일 게임",
+        "image": "image/project/game/verdandi.svg",
+        "teckStack": ["unity", "C#", "postgreSQL"],
+        "from": "dobby canvas",
+        "category": "Game"
+    },
+    {
+        "title": "Claude API 사내 코드 리뷰 봇",
+        "time": "2024.7 - 2024.7",
+        "task": "GitLab 댓글 & pre-commit 코드 리뷰",
+        "image": "image/project/ai-serving/code-review-bot.svg",
+        "teckStack": ["claude", "gitlab", "pre-commit"],
+        "from": "ensapia",
+        "category": "AI-Serving"
+    },
+    {
+        "title": "디자이너용 AI 도구 고도화",
+        "time": "2023.7 - 2024.8",
+        "task": "Runpod Serverless 추론 & 유사 이미지 검색",
+        "image": "image/project/ai-serving/designer-ai-tool.svg",
+        "teckStack": [
+            "SDXL",
+            "controlNet",
+            "runpod",
+            "graphQL",
+            "vector DB",
+            "segmentation"
+        ],
+        "from": "ensapia",
+        "category": "AI-Serving"
+    },
+    {
+        "title": "색 변환 실행 인프라",
+        "time": "2023.6 - 2024.8",
+        "task": "AWS EKS 비동기 Job 실행",
+        "image": "image/project/ai-serving/color-conversion-infra.svg",
+        "teckStack": [
+            "gRPC",
+            "docker",
+            "kubernetes job",
+            "karpenter",
+            "AWS EKS"
+        ],
+        "from": "ensapia",
+        "category": "AI-Serving"
+    },
+    {
         "title": "Portfolio",
         "time": "2023.7 - 2023.7",
         "task": "webpage",
@@ -23,7 +189,7 @@
             "ChatGPT"
         ],
         "link": "https://www.notion.so/Text-to-Image-Translation-Tag-Keyword-d1851dc2ddd94884a7c02a4765b12ad7?pvs=4",
-        "from": "cocone",
+        "from": "ensapia",
         "category": "AI-Serving"
     },
     {
@@ -33,7 +199,7 @@
         "image": "image/project/ai-serving/sd-webui.png",
         "teckStack": ["react", "html", "css", "diffusers", "cockroachDB"],
         "link": "https://www.notion.so/Stable-Diffusion-WebUI-258b4ff27ce44a5ab7d54215c19766e2?pvs=4",
-        "from": "cocone",
+        "from": "ensapia",
         "category": "AI-Serving"
     },
     {
@@ -43,7 +209,7 @@
         "image": "image/project/ai-research/chatgpt_diffusers.png",
         "teckStack": ["diffusers", "stable diffusion", "ChatGPT"],
         "link": "https://www.notion.so/Stable-Diffusion-8c3e4c8a8d44455bb8cf03da6f35ce88?pvs=4",
-        "from": "cocone",
+        "from": "ensapia",
         "category": "AI-Research"
     },
     {
@@ -68,7 +234,7 @@
             "image inpainting"
         ],
         "link": "https://www.notion.so/c310cad26f9b4e789323894d95d61cd8?pvs=4",
-        "from": "cocone",
+        "from": "ensapia",
         "category": "AI-Serving"
     },
     {
@@ -78,7 +244,7 @@
         "image": "image/project/ai-serving/User-Guided Image Colorization.png",
         "teckStack": ["Computer vision", "python"],
         "link": "https://www.notion.so/User-Guided-Image-Colorization-6d980bd0315b47ab9355de95eda1c1b6?pvs=4",
-        "from": "cocone",
+        "from": "ensapia",
         "category": "AI-Serving"
     },
     {
@@ -91,7 +257,6 @@
         "from": "hutom",
         "category": "AI-Research"
     },
-
     {
         "title": "외과 수술 단계 인식 프로젝트",
         "time": "2019.10 - 2022.5",

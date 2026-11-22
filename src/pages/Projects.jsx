@@ -5,7 +5,13 @@ import ProjectCard from "./Projects/ProjectCard";
 import styles from "src/styles/Projects.module.css";
 
 export default function Projects() {
-    const categorys = ["AI-Research", "AI-Serving", "Web-Application"];
+    const categorys = [
+        "LLM-Service",
+        "AI-Research",
+        "AI-Serving",
+        "Game",
+        "Web-Application",
+    ];
     const [activeCategory, setActiveCategory] = useState("All");
     const [data, setData] = useState(null);
 

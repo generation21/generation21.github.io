@@ -10,7 +10,7 @@ export default function Information({ handleOnClickIsOpen }) {
                     .type("Seungbum hong")
                     .pause(750)
                     .delete()
-                    .type("Deep learning engineer")
+                    .type("AI Engineer")
                     .pause(750)
                     .delete()
                     .type("Full Stack Engineer")
@@ -59,7 +59,7 @@ export default function Information({ handleOnClickIsOpen }) {
                         </li>
                         <li>
                             <span className={styles.text}>Age: </span>
-                            30, 1994.12
+                            33, 1994.12
                         </li>
 
                         <li>

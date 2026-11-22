@@ -4,7 +4,7 @@ import { RiOpenaiFill } from "react-icons/ri";
 
 export default function Home() {
     const phrases = [
-        " Deep Learning Engineer",
+        " AI Engineer",
         " Full Stack Engineer",
         " the creator of the ideal.",
     ];
