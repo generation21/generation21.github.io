@@ -99,6 +99,7 @@ export default function Projects() {
                                 />
                             );
                         }
+                        return null;
                     })}
                 </div>
             </div>

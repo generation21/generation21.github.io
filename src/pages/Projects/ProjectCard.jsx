@@ -3,7 +3,7 @@ import styles from "src/styles/ProjectCard.module.css";
 const ProjectCard = ({ title, task, time, from, image, link, techStack }) => {
     return (
         <div className={styles.project}>
-            <a href={link} target="_blank">
+            <a href={link} target="_blank" rel="noreferrer">
                 <img src={image} alt={title} className={styles.project__img} />
                 <div className={styles.project__metadata}>
                     <h3 className={styles.project__title}>{title}</h3>
