@@ -171,7 +171,7 @@
         "task": "webpage",
         "image": "image/project/side-project/portfolio.png",
         "teckStack": ["react", "html", "css"],
-        "link": "https://portfolio-d5b.pages.dev/home",
+        "link": "https://generation21.github.io/",
         "from": "side-project",
         "category": "Web-Application"
     },
