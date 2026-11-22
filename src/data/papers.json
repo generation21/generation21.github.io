@@ -16,7 +16,7 @@
     {
         "title": "Surgical Scene Segmentation Using Semantic Image Synthesis with a Virtual Surgery Environment ",
         "time": "2022.9",
-        "task": "3 author",
+        "task": "third author",
         "image": "image/papers/MICCAI2022.png",
         "teckStack": [
             "GAN",
@@ -32,7 +32,7 @@
     {
         "title": "Self Supervised Knowledge Transfer via Loosely Supervised Auxiliary Tasks",
         "time": "2022.12",
-        "task": "frist author",
+        "task": "first author",
         "image": "image/papers/SSKT.png",
         "teckStack": ["Transfer Learning"],
         "link": "https://arxiv.org/abs/2110.12696",
@@ -42,7 +42,7 @@
     {
         "title": "Rethinking Generalization Performance of Surgical Phase Recognition with Expert-Generated Annotations",
         "time": "2021.11",
-        "task": "frist author",
+        "task": "first author",
         "image": "image/papers/NeurIPS2021.png",
         "teckStack": ["phase recognition", "datasets"],
         "link": "https://arxiv.org/abs/2110.11626",
@@ -93,7 +93,7 @@
     {
         "title": "Deep Mutual Learning with Pretrained CNNs using Inhomogeneous Datasets",
         "time": "2020.3",
-        "task": "frist author",
+        "task": "first author",
         "image": "image/papers/CKAIA2020.png",
         "teckStack": ["Mutual learning", "Transfer Learning"],
         "link": "https://drive.google.com/file/d/147gmzAxgowzGiuFnjQkafy0kR5x-QSsU/view",
