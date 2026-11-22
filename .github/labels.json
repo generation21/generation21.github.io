@@ -1,0 +1,20 @@
+{
+  "_comment": "프로젝트 영역 레이블. 공통 레이블(종류·표시)은 hsb 플러그인 labels/common.json 이 갖는다.",
+  "labels": [
+    {
+      "name": "site",
+      "color": "1D76DB",
+      "description": "사이트 골격 — src/layouts, src/pages, src/styles, astro.config.mjs, 배포 설정"
+    },
+    {
+      "name": "content",
+      "color": "0E8A16",
+      "description": "보이는 내용 — src/content(사례 원고), src/data, public/image"
+    },
+    {
+      "name": "ext:capture",
+      "color": "C5DEF5",
+      "description": "저장소 밖의 몫 — 실기기·사내 환경에서 사람이 캡처하거나 회사 공개 허락을 받아야 한다"
+    }
+  ]
+}

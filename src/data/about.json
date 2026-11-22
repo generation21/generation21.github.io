@@ -1,0 +1,30 @@
+{
+    "office": [
+        {
+            "title": "dobby canvas",
+            "time": "2024.09 - 현재",
+            "role": "AI Engineer",
+            "description": "자사 LLM 캐릭터 대화 게임 두 개의 Unity 클라이언트·서버와 대화 분석 보고서 API, 캐릭터 상태에 따른 컨텍스트 구성, 대화 기반 이미지·음성 생성을 개발하고 운영했습니다. 기획·아트팀이 쓰는 사내 생성형 AI 플랫폼을 React 웹 UI와 Python API로 만들어 Azure와 온프레미스 GPU로 운영했고, 생성 모델의 학습·출시와 GPU 워커 운영을 맡았습니다. Flutter·Firebase 신작 게임은 저장소부터 직접 만들었고, AI 코딩 에이전트로 이슈별 병렬 개발을 하고 있습니다."
+        },
+        {
+            "title": "ensapia (재직 당시 cocone m)",
+            "time": "2022.11 - 2024.09",
+            "role": "AI Engineer",
+            "description": "맞춤형 디지털 패션 아이템 제작을 지원하는 AI 도구인 'Cocone Design Assistant (CoDA)'의 이미지 생성 모델 개발과 웹 기능 추가·유지보수를 담당했습니다. Runpod Serverless 추론 인프라, Vector DB 기반 유사 이미지 검색, AWS EKS 기반 색 변환 실행 인프라를 구축했고, Claude API로 사내 코드 리뷰 봇을 만들었습니다."
+        },
+        {
+            "title": "hutom",
+            "time": "2019.10 - 2022.11",
+            "role": "Deep learning Researcher",
+            "description": "외과 수술 영상 분석 및 검토를 위한 제품인 'Surggram'의 개발에 참여했습니다. 주요 업무는 'Surgical Phase Recognition' 기능에 대한 연구와 개발을 수행하는 것이었습니다."
+        }
+    ],
+    "school": [
+        {
+            "title": "Inha University",
+            "time": "2017.05 - 2019.09",
+            "role": "Deep learning Researcher",
+            "description": "학부연구생으로 연구실에서 다양한 국책 및 기업 연구 프로젝트를 수행하였습니다. 이를 통해 팀원들과 협력하며 실제 문제를 해결하는 데 필요한 연구 역량과 전문성을 기르고 실무 경험을 쌓았습니다."
+        }
+    ]
+}
