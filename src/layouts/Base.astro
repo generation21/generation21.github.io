@@ -1,0 +1,73 @@
+---
+import "../styles/global.css";
+import { contacts } from "../data/contacts";
+
+interface Props {
+    title?: string;
+    description?: string;
+}
+
+const siteTitle = "홍승범 · AI Engineer";
+const {
+    title,
+    description = "LLM과 생성형 AI를 실제 사용자와 현업이 쓰는 서비스·도구로 만드는 AI 엔지니어 홍승범의 포트폴리오",
+} = Astro.props;
+const pageTitle = title ? `${title} | ${siteTitle}` : siteTitle;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+---
+
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>{pageTitle}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <link rel="icon" href="/image/favicon.ico" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container">
+                <a class="site-name" href="/">홍승범</a>
+                <nav class="site-nav" aria-label="섹션">
+                    <a href="/#work">사례</a>
+                    <a href="/#experience">경력</a>
+                    <a href="/#projects">프로젝트</a>
+                    <a href="/#papers">논문</a>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            <slot />
+        </main>
+        <footer class="site-footer">
+            <div class="container">
+                <ul class="links">
+                    {
+                        contacts.map((c) => (
+                            <li>
+                                <a
+                                    href={c.href}
+                                    target={
+                                        c.href.startsWith("http")
+                                            ? "_blank"
+                                            : undefined
+                                    }
+                                    rel="noreferrer"
+                                >
+                                    {c.label}
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </footer>
+    </body>
+</html>

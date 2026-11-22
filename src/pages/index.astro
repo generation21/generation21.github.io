@@ -1,0 +1,186 @@
+---
+import { getCollection } from "astro:content";
+import Base from "../layouts/Base.astro";
+import about from "../data/about.json";
+import projects from "../data/projects.json";
+import papers from "../data/papers.json";
+import { contacts } from "../data/contacts";
+
+const work = (await getCollection("work")).sort(
+    (a, b) => a.data.order - b.data.order,
+);
+const replaced = new Set(work.map((w) => w.data.replaces));
+
+const categories = [
+    { key: "LLM-Service", label: "LLM 서비스" },
+    { key: "AI-Serving", label: "AI 서빙·인프라" },
+    { key: "Game", label: "게임" },
+    { key: "AI-Research", label: "AI 연구" },
+    { key: "Web-Application", label: "웹" },
+];
+const archive = categories
+    .map((c) => ({
+        ...c,
+        items: projects.filter(
+            (p) => p.category === c.key && !replaced.has(p.title),
+        ),
+    }))
+    .filter((c) => c.items.length > 0);
+
+const paperGroups = [
+    { key: "Paper", label: "논문" },
+    { key: "AI-Challenge", label: "챌린지" },
+].map((g) => ({ ...g, items: papers.filter((p) => p.category === g.key) }));
+
+const experience = [...about.office, ...about.school];
+---
+
+<Base>
+    <div class="hero">
+        <p class="eyebrow">AI Engineer · LLM 서비스 · 생성형 AI</p>
+        <h1>
+            LLM과 생성형 AI를<br />실제 사용자와 현업이 쓰는 서비스·도구로
+            만듭니다.
+        </h1>
+        <p class="lead">
+            회사 경력 약 7년. 외과 수술 영상 인식 연구로 시작해 생성 모델
+            서빙을 거쳐, 지금은 LLM 캐릭터 대화 게임의 서버·클라이언트와 사내
+            생성형 AI 플랫폼을 만들고 운영합니다.
+        </p>
+        <ul class="proof">
+            <li>
+                LLM 캐릭터 대화 게임 2종의 대화 컨텍스트·분석 보고서·실패 처리 개발
+            </li>
+            <li>
+                기획·아트팀이 쓰는 사내 생성형 AI 플랫폼을 혼자 설계·구축 (Azure
+                + 로컬 GPU)
+            </li>
+            <li>제1저자 논문 WACV 2022 · NeurIPS 2021 워크숍</li>
+        </ul>
+        <ul class="links">
+            {
+                contacts.map((c) => (
+                    <li>
+                        <a
+                            href={c.href}
+                            target={
+                                c.href.startsWith("http") ? "_blank" : undefined
+                            }
+                            rel="noreferrer"
+                        >
+                            {c.label}
+                        </a>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+
+    <section id="work">
+        <h2 class="section-title">대표 사례</h2>
+        <div class="cards">
+            {
+                work.map((w) => (
+                    <a class="card" href={`/work/${w.id}/`}>
+                        <p class="meta">
+                            {w.data.company} · {w.data.period}
+                        </p>
+                        <h3>{w.data.title}</h3>
+                        <p>{w.data.summary}</p>
+                        <ul>
+                            {w.data.highlights.map((h) => (
+                                <li>{h}</li>
+                            ))}
+                        </ul>
+                        <span class="more">자세히 보기 →</span>
+                    </a>
+                ))
+            }
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2 class="section-title">경력 · 학력</h2>
+        <ul class="timeline">
+            {
+                experience.map((e) => (
+                    <li>
+                        <span class="muted">{e.time}</span>
+                        <h3>
+                            {e.title}
+                            <span class="role">{e.role}</span>
+                        </h3>
+                        <p>{e.description}</p>
+                    </li>
+                ))
+            }
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">그 밖의 프로젝트</h2>
+        {
+            archive.map((group) => (
+                <div class="list-group">
+                    <h3>{group.label}</h3>
+                    <ul class="rows">
+                        {group.items.map((p) => (
+                            <li>
+                                <span class="when">{p.time}</span>
+                                <span class="what">
+                                    {p.link ? (
+                                        <a
+                                            href={p.link}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                        >
+                                            {p.title}
+                                        </a>
+                                    ) : (
+                                        p.title
+                                    )}
+                                    <span class="sub">
+                                        {p.task} · {p.from}
+                                    </span>
+                                    <span class="sub">
+                                        {p.teckStack.join(", ")}
+                                    </span>
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))
+        }
+    </section>
+
+    <section id="papers">
+        <h2 class="section-title">논문 · 챌린지</h2>
+        {
+            paperGroups.map((group) => (
+                <div class="list-group">
+                    <h3>{group.label}</h3>
+                    <ul class="rows">
+                        {group.items.map((p) => (
+                            <li>
+                                <span class="when">{p.from}</span>
+                                <span class="what">
+                                    <a
+                                        href={p.link}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        {p.title.trim()}
+                                    </a>
+                                    {p.task && (
+                                        <span class="sub">{p.task}</span>
+                                    )}
+                                </span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))
+        }
+    </section>
+</Base>
