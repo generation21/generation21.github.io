@@ -1,0 +1,7 @@
+{
+  "_comment": "프로젝트 영역 레이블. 공통 레이블(종류·표시)은 hsb 플러그인 labels/common.json 이 갖는다.",
+  "labels": [
+    { "name": "site",    "color": "1D76DB", "description": "사이트 골격 — src/layouts, src/pages, src/styles, astro.config.mjs, 배포 설정" },
+    { "name": "content", "color": "0E8A16", "description": "보이는 내용 — src/content(사례 원고), src/data, public/image" }
+  ]
+}
