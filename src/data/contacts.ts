@@ -5,5 +5,4 @@ export const contacts = [
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/seungbum-hong-531311171/",
     },
-    { label: "Blog", href: "https://qbnet.tistory.com/" },
 ];
