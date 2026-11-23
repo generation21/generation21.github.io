@@ -297,6 +297,12 @@ section {
     font-size: 0.875rem;
 }
 
+.rows .desc {
+    display: block;
+    margin: 2px 0;
+    font-size: 0.9375rem;
+}
+
 @media (max-width: 560px) {
     .site-nav {
         display: none;

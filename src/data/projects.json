@@ -188,7 +188,6 @@
             "opensearch",
             "ChatGPT"
         ],
-        "link": "https://www.notion.so/Text-to-Image-Translation-Tag-Keyword-d1851dc2ddd94884a7c02a4765b12ad7?pvs=4",
         "from": "ensapia",
         "category": "AI-Serving"
     },
@@ -198,7 +197,6 @@
         "task": "sd-webui parameter 조절 기능 구현",
         "image": "image/project/ai-serving/sd-webui.png",
         "teckStack": ["react", "html", "css", "diffusers", "cockroachDB"],
-        "link": "https://www.notion.so/Stable-Diffusion-WebUI-258b4ff27ce44a5ab7d54215c19766e2?pvs=4",
         "from": "ensapia",
         "category": "AI-Serving"
     },
@@ -208,7 +206,6 @@
         "task": "Text to Image Generation",
         "image": "image/project/ai-research/chatgpt_diffusers.png",
         "teckStack": ["diffusers", "stable diffusion", "ChatGPT"],
-        "link": "https://www.notion.so/Stable-Diffusion-8c3e4c8a8d44455bb8cf03da6f35ce88?pvs=4",
         "from": "ensapia",
         "category": "AI-Research"
     },
@@ -233,7 +230,6 @@
             "semantic segmentation",
             "image inpainting"
         ],
-        "link": "https://www.notion.so/c310cad26f9b4e789323894d95d61cd8?pvs=4",
         "from": "ensapia",
         "category": "AI-Serving"
     },
@@ -243,7 +239,6 @@
         "task": "Automatic Coloring",
         "image": "image/project/ai-serving/User-Guided Image Colorization.png",
         "teckStack": ["Computer vision", "python"],
-        "link": "https://www.notion.so/User-Guided-Image-Colorization-6d980bd0315b47ab9355de95eda1c1b6?pvs=4",
         "from": "ensapia",
         "category": "AI-Serving"
     },
@@ -253,7 +248,7 @@
         "task": "Instrument Key point Estimation",
         "image": "image/project/ai-research/instrument.png",
         "teckStack": ["pytorch", "pose estimation"],
-        "link": "https://www.notion.so/Instrument-Key-point-Estimation-d4912a9233e2444bbaaafecfff5ec7bc?pvs=4",
+        "summary": "EndoVis'15 데이터로 수술 도구 keypoint 추정 논문 모델을 구현했습니다. 논문 설정으로는 재현되지 않아 loss 가중치·옵티마이저·augmentation을 바꿔 가며 맞췄고, rotation augmentation이 없으면 학습되지 않는다는 것을 확인했습니다.",
         "from": "hutom",
         "category": "AI-Research"
     },
@@ -263,7 +258,7 @@
         "task": "Phase Recognition",
         "image": "image/project/ai-research/surgical_workflow_recognition.png",
         "teckStack": ["MMAction2", "pytorch", "python"],
-        "link": "https://www.notion.so/Robot-Surgical-Video-Workflow-Recognition-f07a1230467140308c1dbaf383c2bb2f?pvs=4",
+        "summary": "로봇 위암 절제술 영상 100개를 27개 단계로 나눈 데이터로 영상 인식 모델을 학습해, 3-fold 교차검증 평균 Accuracy 77.34(앙상블)를 얻고 추론 기능을 Docker 이미지로 ML Ops 팀에 넘겼습니다.",
         "from": "hutom",
         "category": "AI-Research"
     },
@@ -273,16 +268,17 @@
         "task": "Phase Recognition",
         "image": "image/project/ai-research/SBAProject.jpeg",
         "teckStack": ["pytorch", "socket", "pyQt5"],
-        "link": "https://www.notion.so/SBA-Project-568186bd3f02445b98786aa9cc02a5bf?pvs=4",
+        "summary": "국가정책연구 과제. 로봇 위암 절제술 중 위 주변 혈관을 자르는 단계를 SlowFast로 인식하고(6개 class, 검증 Accuracy 90.56), 현재 단계를 socket으로 수술 내비게이션 프로그램에 실시간 전달했습니다. 모델의 class가 화면에서 수술적 의미와 맞지 않아 수술실 간호사와 class를 다시 정의했습니다.",
         "from": "hutom",
         "category": "AI-Research"
     },
     {
         "title": "디지털 컴패니언 기반의 고령자 모니터링 및 대응 소프트웨어 기술 개발",
-        "time": "2017.10 - 2019.9",
+        "time": "2017.5 - 2019.9",
         "task": "action recognition",
         "image": "image/project/ai-research/Pose_estimation.png",
         "teckStack": ["OpenPose", "pose estimation", "LSTM", "python"],
+        "summary": "노인 복지 회관 등에서 11개 동작 데이터를 직접 모아, OpenPose skeleton과 LSTM으로 동작을 인식하고 출력 확률에 임계값을 두어 이상 상태를 가렸습니다. class별 70% 이상, 평균 86%.",
         "from": "inha",
         "category": "AI-Research"
     },
@@ -291,8 +287,8 @@
         "time": "2018.4 - 2019.3",
         "task": "parameter searching",
         "image": "image/project/ai-research/makeup.png",
-        "teckStack": ["MMAction2", "pytorch", "python"],
-        "link": "https://www.notion.so/194dd82cf4154ff082c292d82a6e46a3?pvs=4",
+        "teckStack": ["Matlab", "linear regression", "CIELAB"],
+        "summary": "화장품 12종·조도 3단계·실험자 20명의 입술 색을 CIELAB로 측정하고, 실제 화장과 같은 결과를 내는 화장 앱의 색 파라미터를 다중 선형 회귀로 추정했습니다. 화장품 9종으로 학습하고 3종으로 시험한 220건에서 평균 색차 7.52.",
         "from": "inha",
         "category": "AI-Research"
     },
@@ -302,17 +298,18 @@
         "task": "anomaly sound detection",
         "image": "image/project/ai-research/igps.png",
         "teckStack": ["tensorflow", "python", "MFCC Algorithm"],
-        "link": "https://www.notion.so/I-GPS-06835299966341ca91f09f5c03774e20?pvs=4",
+        "summary": "미니 선풍기의 정상·앞 나사·팬·모터 이상 네 가지 소리를 녹음해, MFCC 특징과 DNN으로 기계 결함을 분류했습니다. class당 100초씩 따로 녹음한 검증 셋에서 각 99% 이상.",
         "from": "inha",
         "category": "AI-Research"
     },
     {
         "title": "캡스톤",
-        "time": "2018.10 - 2018.12",
+        "time": "2018.9 - 2018.12",
         "task": "hand pose estimation",
         "image": "image/project/ai-serving/capstone.png",
-        "teckStack": ["OpenPose"],
-        "link": "https://www.notion.so/d82d041189214c1baa6c35e97f415d38?pvs=4",
+        "teckStack": ["OpenPose", "LSTM", "socket"],
+        "link": "https://github.com/generation21/HandVis",
+        "summary": "학부 캡스톤. 손동작 8종을 OpenPose 손 keypoint 21개와 LSTM으로 인식하고, 결과를 socket으로 서버에 실시간 보내 IoT 장치를 제어했습니다. 시험 영상에서 약 85%, 학기 캡스톤 우수 팀.",
         "from": "inha",
         "category": "AI-Serving"
     }

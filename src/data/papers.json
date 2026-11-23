@@ -9,7 +9,8 @@
             "self supervised learning",
             "datasets"
         ],
-        "link": "https://www.notion.so/Visual-Inductive-Priors-for-Data-Efficient-Computer-Vision-ObjectDetection-a5417a108dec41be8e60cf96b2785eb6?pvs=4",
+        "link": "https://vipriors.github.io/2022/challenges/",
+        "summary": "외부 사전학습 모델을 쓸 수 없는 조건에서 자기지도 학습 backbone을 맡아 Rotation·SimCLR·MoCo v2·SimMIM·MAE를 비교하고, bbox 영역을 잘라 분류하는 사전 과제를 만들었습니다.",
         "from": "ECCV2022",
         "category": "AI-Challenge"
     },
