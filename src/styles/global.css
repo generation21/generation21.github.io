@@ -402,6 +402,27 @@ section {
     height: auto;
 }
 
+/* 세로 모바일 게임 화면은 데스크톱 본문 폭의 절반쯤(300px)으로 가운데에 둔다 */
+.prose figure.screen {
+    margin: 28px auto;
+    max-width: 300px;
+}
+
+.prose figure.screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.prose figure.screen figcaption {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
 .prose blockquote {
     margin: 20px 0;
     padding: 4px 0 4px 16px;
