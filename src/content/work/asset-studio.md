@@ -32,14 +32,7 @@ stack:
 
 ## 구조
 
-```text
-React 웹 (Static Web Apps)
-    │  JWT 인증
-Azure Functions (Python, HTTP 함수 35개) ── Blob Storage (결과 파일)
-    │                          │
-    │ 동기 호출                 │ Cosmos DB 큐
-OpenAI · Gemini 이미지 API      로컬 GPU: 배치 워커 → ComfyUI / vLLM
-```
+![React 웹이 JWT로 Azure Functions를 호출하고, Functions는 OpenAI·Gemini 이미지 API를 동기 호출하거나 Cosmos DB 큐에 작업을 등록한다. 사내 GPU 머신의 배치 워커가 켜져 있는 동안 2초마다 큐를 확인해 ComfyUI·vLLM으로 처리하고 결과를 Blob Storage에 올린다.](/image/work/asset-studio/architecture.svg)
 
 웹과 API는 Azure에서 돌고, 생성은 사내 GPU에서 합니다. 인프라는 Bicep으로 정의했고, 인프라·코드·웹 배포 스크립트를 나눠 두었습니다.
 

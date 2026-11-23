@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 556" width="720" height="556" role="img" aria-labelledby="title desc">
+    <title id="title">사내 생성형 AI 플랫폼 구조도</title>
+    <desc id="desc">React 웹이 JWT로 Azure Functions를 호출한다. Functions는 OpenAI·Gemini 이미지 API를 동기 호출하거나, Cosmos DB 큐에 작업을 등록한다. 사내 GPU 머신의 배치 워커가 켜져 있는 동안 2초마다 큐를 확인해 ComfyUI와 vLLM으로 생성하고, 결과를 Blob Storage와 히스토리에 기록한다.</desc>
+    <style>
+        text { font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif; fill: #1c1c1e; }
+        .name { font-size: 15px; font-weight: 600; }
+        .sub { font-size: 13px; fill: #6b6b70; }
+        .label { font-size: 13px; fill: #6b6b70; }
+        .label-accent { font-size: 13px; font-weight: 600; fill: #3b5bdb; }
+        .group-label { font-size: 13px; font-weight: 600; fill: #6b6b70; }
+        .box { fill: #ffffff; stroke: #6b6b70; stroke-opacity: 0.45; }
+        .box-accent { fill: #edf1ff; stroke: #3b5bdb; }
+        .group { fill: none; stroke: #6b6b70; stroke-opacity: 0.5; stroke-dasharray: 5 4; }
+        .line { fill: none; stroke: #6b6b70; stroke-width: 1.5; }
+        .line-accent { fill: none; stroke: #3b5bdb; stroke-width: 2; }
+        .head { fill: #6b6b70; }
+        .head-accent { fill: #3b5bdb; }
+        @media (prefers-color-scheme: dark) {
+            text { fill: #ececee; }
+            .sub, .label, .group-label { fill: #9a9aa2; }
+            .label-accent { fill: #8ea4ff; }
+            .box { fill: #1c1c1f; stroke: #9a9aa2; }
+            .box-accent { fill: #20253a; stroke: #8ea4ff; }
+            .group { stroke: #9a9aa2; }
+            .line { stroke: #9a9aa2; }
+            .line-accent { stroke: #8ea4ff; }
+            .head { fill: #9a9aa2; }
+            .head-accent { fill: #8ea4ff; }
+        }
+    </style>
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path class="head" d="M0 0 L10 5 L0 10 z" />
+        </marker>
+        <marker id="arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path class="head-accent" d="M0 0 L10 5 L0 10 z" />
+        </marker>
+    </defs>
+
+    <!-- Azure -->
+    <rect class="group" x="8" y="8" width="508" height="314" rx="12" />
+    <text class="group-label" x="24" y="32">Azure</text>
+
+    <rect class="box" x="128" y="44" width="268" height="56" rx="8" />
+    <text class="name" x="262" y="67" text-anchor="middle">React 웹 UI</text>
+    <text class="sub" x="262" y="87" text-anchor="middle">Static Web Apps</text>
+
+    <path class="line" d="M262 100 V146" marker-end="url(#arrow)" />
+    <text class="label" x="274" y="128">HTTP /api/* · JWT 인증</text>
+
+    <rect class="box" x="128" y="148" width="268" height="56" rx="8" />
+    <text class="name" x="262" y="171" text-anchor="middle">Azure Functions</text>
+    <text class="sub" x="262" y="191" text-anchor="middle">Python 3.12 · HTTP 함수 35개</text>
+
+    <path class="line-accent" d="M188 204 V248" marker-end="url(#arrow-accent)" />
+    <text class="label-accent" x="180" y="231" text-anchor="end">② 큐에 작업 등록</text>
+    <path class="line" d="M336 204 V248" marker-end="url(#arrow)" />
+    <text class="label" x="344" y="231">입력 · 결과 파일</text>
+
+    <rect class="box" x="28" y="250" width="220" height="56" rx="8" />
+    <text class="name" x="138" y="273" text-anchor="middle">Cosmos DB</text>
+    <text class="sub" x="138" y="293" text-anchor="middle">히스토리 · 생성 작업 큐</text>
+
+    <rect class="box" x="276" y="250" width="220" height="56" rx="8" />
+    <text class="name" x="386" y="273" text-anchor="middle">Blob Storage</text>
+    <text class="sub" x="386" y="293" text-anchor="middle">입력 · 결과 파일</text>
+
+    <!-- 상용 API -->
+    <path class="line-accent" d="M396 176 H546" marker-end="url(#arrow-accent)" />
+    <text class="label-accent" x="472" y="166" text-anchor="middle">① 동기 호출</text>
+    <rect class="box" x="548" y="148" width="164" height="56" rx="8" />
+    <text class="name" x="630" y="171" text-anchor="middle">OpenAI · Gemini</text>
+    <text class="sub" x="630" y="191" text-anchor="middle">이미지 API</text>
+
+    <!-- 사내 GPU 머신 -->
+    <path class="line-accent" d="M110 396 V308" marker-end="url(#arrow-accent)" marker-start="url(#arrow-accent)" />
+    <text class="label-accent" x="120" y="344">2초마다 작업 확인 · 상태 기록</text>
+    <path class="line" d="M420 396 V308" marker-end="url(#arrow)" marker-start="url(#arrow)" />
+    <text class="label" x="430" y="344">입력 받기 · 결과 올리기</text>
+
+    <rect class="group" x="8" y="358" width="704" height="190" rx="12" />
+    <text class="group-label" x="696" y="382" text-anchor="end">사내 GPU 머신 (RTX 4090) · 필요할 때 켬</text>
+
+    <rect class="box-accent" x="28" y="398" width="468" height="130" rx="8" />
+    <text class="name" x="262" y="452" text-anchor="middle">배치 워커</text>
+    <text class="sub" x="262" y="474" text-anchor="middle">생성 작업과 번역 작업을 같은 큐에서 처리</text>
+
+    <path class="line" d="M496 432 H546" marker-end="url(#arrow)" />
+    <path class="line" d="M496 494 H546" marker-end="url(#arrow)" />
+
+    <rect class="box" x="548" y="404" width="148" height="56" rx="8" />
+    <text class="name" x="622" y="427" text-anchor="middle">ComfyUI</text>
+    <text class="sub" x="622" y="447" text-anchor="middle">이미지 · 영상 생성</text>
+
+    <rect class="box" x="548" y="466" width="148" height="56" rx="8" />
+    <text class="name" x="622" y="489" text-anchor="middle">vLLM (Gemma)</text>
+    <text class="sub" x="622" y="509" text-anchor="middle">프롬프트 영어 번역</text>
+</svg>
