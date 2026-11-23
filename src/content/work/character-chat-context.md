@@ -22,7 +22,7 @@ stack:
 
 ## 배경
 
-「멸망한 세계의 신이 되었다」와 「비정규직 황후」는 플레이어가 LLM 캐릭터와 대화하며 스토리를 진행하는 모바일 게임입니다. 「멸망한 세계의 신이 되었다」는 팀이 2025년에 Google Play와 App Store에 출시했습니다.
+「멸망한 세계의 신이 되었다」와 「비정규직 황후」는 플레이어가 LLM 캐릭터와 대화하며 스토리를 진행하는 모바일 게임입니다. 「멸망한 세계의 신이 되었다」는 팀이 2025년에 [Google Play](https://play.google.com/store/apps/details?id=com.dobbycanvas.verdandi)와 [App Store](https://apps.apple.com/kr/app/id6741012872)에 출시했습니다. 「비정규직 황후」도 [Google Play](https://play.google.com/store/apps/details?id=com.dobbycanvas.empress)와 [App Store](https://apps.apple.com/kr/app/the-irregular-empress/id6760219847)에서 받을 수 있습니다.
 
 이런 게임에서는 세 가지가 계속 문제가 됩니다.
 
