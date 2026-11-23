@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 730" width="720" height="730" role="img" aria-labelledby="title desc">
+    <title id="title">「신이 쌓는 세계」 점수 제출 검증 순서</title>
+    <desc id="desc">판을 시작하면 클라이언트가 서버에 세션을 요청하고, Functions가 Firestore에 1회용 세션을 만들어 세션 ID를 돌려준다. 판이 끝나면 세션 ID와 함께 점수를 제출하고, Functions가 트랜잭션 안에서 세션을 읽어 판정한다. 없거나 다른 사용자의 세션이면 거절하고, 이미 제출한 세션이면 저장해 둔 결과를 그대로 돌려주며, 처음 제출이면 점수·재화·리더보드를 갱신하고 세션에 결과를 기록한다. 클라이언트가 점수·리더보드·화폐 필드를 Firestore에 직접 쓰는 요청은 보안 규칙의 쓰기 허용 목록에서 거절된다.</desc>
+    <style>
+        text { font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif; fill: #1c1c1e; }
+        .name { font-size: 15px; font-weight: 600; }
+        .sub { font-size: 13px; fill: #6b6b70; }
+        .label { font-size: 13px; }
+        .cond { font-size: 13px; font-weight: 600; fill: #6b6b70; }
+        .label-accent { font-size: 13px; font-weight: 600; fill: #3b5bdb; }
+        .group-label { font-size: 13px; font-weight: 600; fill: #3b5bdb; }
+        .box { fill: #ffffff; stroke: #6b6b70; stroke-opacity: 0.45; }
+        .bg { fill: #fbfaf7; }
+        .frame { fill: none; stroke: #3b5bdb; stroke-opacity: 0.6; }
+        .divider { stroke: #6b6b70; stroke-opacity: 0.45; stroke-dasharray: 4 3; }
+        .lifeline { stroke: #6b6b70; stroke-opacity: 0.45; stroke-dasharray: 2 4; }
+        .line { fill: none; stroke: #6b6b70; stroke-width: 1.5; }
+        .reply { stroke-dasharray: 5 4; }
+        .blocked { fill: none; stroke: #3b5bdb; stroke-width: 1.5; stroke-dasharray: 5 4; }
+        .cross { fill: none; stroke: #3b5bdb; stroke-width: 2.5; }
+        .head { fill: #6b6b70; }
+        @media (prefers-color-scheme: dark) {
+            text { fill: #ececee; }
+            .sub, .cond { fill: #9a9aa2; }
+            .label-accent, .group-label { fill: #8ea4ff; }
+            .box { fill: #1c1c1f; stroke: #9a9aa2; }
+            .bg { fill: #141416; }
+            .frame { stroke: #8ea4ff; }
+            .divider, .lifeline { stroke: #9a9aa2; }
+            .line { stroke: #9a9aa2; }
+            .blocked, .cross { stroke: #8ea4ff; }
+            .head { fill: #9a9aa2; }
+        }
+    </style>
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path class="head" d="M0 0 L10 5 L0 10 z" />
+        </marker>
+    </defs>
+
+    <!-- 참여자 -->
+    <line class="lifeline" x1="110" y1="68" x2="110" y2="718" />
+    <line class="lifeline" x1="360" y1="68" x2="360" y2="718" />
+    <line class="lifeline" x1="610" y1="68" x2="610" y2="718" />
+
+    <rect class="box" x="20" y="12" width="180" height="56" rx="8" />
+    <text class="name" x="110" y="35" text-anchor="middle">클라이언트</text>
+    <text class="sub" x="110" y="55" text-anchor="middle">Flutter</text>
+    <rect class="box" x="270" y="12" width="180" height="56" rx="8" />
+    <text class="name" x="360" y="35" text-anchor="middle">Firebase Functions</text>
+    <text class="sub" x="360" y="55" text-anchor="middle">Python</text>
+    <rect class="box" x="520" y="12" width="180" height="56" rx="8" />
+    <text class="name" x="610" y="35" text-anchor="middle">Firestore</text>
+    <text class="sub" x="610" y="55" text-anchor="middle">보안 규칙</text>
+
+    <!-- 판 시작 -->
+    <text class="label" x="235" y="104" text-anchor="middle">① 판 시작 · 세션 요청</text>
+    <path class="line" d="M110 112 H358" marker-end="url(#arrow)" />
+    <text class="label" x="485" y="140" text-anchor="middle">1회용 세션 생성 (사용자 · 시각)</text>
+    <path class="line" d="M360 148 H608" marker-end="url(#arrow)" />
+    <text class="label" x="235" y="176" text-anchor="middle">세션 ID</text>
+    <path class="line reply" d="M360 184 H112" marker-end="url(#arrow)" />
+
+    <rect class="box" x="66" y="204" width="88" height="32" rx="6" />
+    <text class="sub" x="110" y="225" text-anchor="middle">플레이</text>
+
+    <!-- 판 종료 -->
+    <text class="label" x="235" y="264" text-anchor="middle">② 판 종료 · 점수 제출 (세션 ID)</text>
+    <path class="line" d="M110 272 H358" marker-end="url(#arrow)" />
+
+    <!-- 트랜잭션 -->
+    <rect class="frame" x="24" y="292" width="672" height="322" rx="10" />
+    <rect class="bg" x="34" y="300" width="68" height="20" />
+    <text class="group-label" x="38" y="315">트랜잭션</text>
+
+    <text class="label" x="485" y="332" text-anchor="middle">세션 · 점수 문서 읽기</text>
+    <path class="line" d="M360 340 H608" marker-end="url(#arrow)" />
+
+    <line class="divider" x1="24" y1="356" x2="696" y2="356" />
+    <rect class="bg" x="34" y="364" width="196" height="20" />
+    <text class="cond" x="38" y="379">[없거나 다른 사용자의 세션]</text>
+    <text class="label" x="235" y="404" text-anchor="middle">400 · 거절</text>
+    <path class="line reply" d="M360 412 H112" marker-end="url(#arrow)" />
+
+    <line class="divider" x1="24" y1="428" x2="696" y2="428" />
+    <rect class="bg" x="34" y="436" width="206" height="20" />
+    <text class="cond" x="38" y="451">[이미 제출한 세션 · 재전송]</text>
+    <text class="label" x="235" y="476" text-anchor="middle">저장해 둔 같은 결과</text>
+    <path class="line reply" d="M360 484 H112" marker-end="url(#arrow)" />
+
+    <line class="divider" x1="24" y1="500" x2="696" y2="500" />
+    <rect class="bg" x="34" y="508" width="80" height="20" />
+    <text class="cond" x="38" y="523">[처음 제출]</text>
+    <text class="label" x="485" y="540" text-anchor="middle">점수 · 재화 · 리더보드 갱신</text>
+    <path class="line" d="M360 548 H608" marker-end="url(#arrow)" />
+    <text class="label" x="485" y="570" text-anchor="middle">세션에 제출 시각 · 결과 기록</text>
+    <path class="line" d="M360 578 H608" marker-end="url(#arrow)" />
+    <text class="label" x="235" y="590" text-anchor="middle">결과</text>
+    <path class="line reply" d="M360 598 H112" marker-end="url(#arrow)" />
+
+    <!-- 직접 쓰기 차단 -->
+    <rect class="bg" x="164" y="650" width="252" height="20" />
+    <text class="label-accent" x="290" y="665" text-anchor="middle">점수 · 리더보드 · 화폐 필드 직접 쓰기</text>
+    <path class="blocked" d="M110 680 H592" />
+    <path class="cross" d="M592 670 L612 690 M612 670 L592 690" />
+    <text class="label-accent" x="696" y="714" text-anchor="end">보안 규칙의 쓰기 허용 목록에서 거절</text>
+</svg>

@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 856" width="720" height="856" role="img" aria-labelledby="title desc">
+    <title id="title">「신이 쌓는 세계」 AI 코딩 에이전트 병렬 개발 흐름</title>
+    <desc id="desc">열린 이슈를 레인 배치 스킬이 파일 겹침과 의존 관계로 병렬 레인에 나눈다. 레인마다 worktree 하나에서 에이전트 세션이 코드를 고치고, 편집 뒤 훅이 자동으로 돈다. 검증 스크립트 게이트를 통과해야 PR을 만들고, 레인별 PR을 확인해 develop에 통합한다. 게이트는 정적 분석과 테스트, 서버 금지 패턴, 변경 기록 누락, 에셋 규격 위반을 막고, 검사 대상을 일부러 지워 게이트가 실제로 실패하는지도 확인했다.</desc>
+    <style>
+        text { font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif; fill: #1c1c1e; }
+        .name { font-size: 15px; font-weight: 600; }
+        .name-accent { font-size: 15px; font-weight: 600; fill: #3b5bdb; }
+        .sub { font-size: 13px; fill: #6b6b70; }
+        .body { font-size: 14px; }
+        .label-accent { font-size: 13px; font-weight: 600; fill: #3b5bdb; }
+        .group-label { font-size: 13px; font-weight: 600; fill: #6b6b70; }
+        .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 15px; font-weight: 600; }
+        .box { fill: #ffffff; stroke: #6b6b70; stroke-opacity: 0.45; }
+        .box-accent { fill: #edf1ff; stroke: #3b5bdb; }
+        .panel { fill: none; stroke: #3b5bdb; stroke-opacity: 0.6; }
+        .group { fill: none; stroke: #6b6b70; stroke-opacity: 0.5; stroke-dasharray: 5 4; }
+        .line { fill: none; stroke: #6b6b70; stroke-width: 1.5; }
+        .dot { fill: #3b5bdb; }
+        .head { fill: #6b6b70; }
+        @media (prefers-color-scheme: dark) {
+            text { fill: #ececee; }
+            .name-accent, .label-accent { fill: #8ea4ff; }
+            .sub, .group-label { fill: #9a9aa2; }
+            .box { fill: #1c1c1f; stroke: #9a9aa2; }
+            .box-accent { fill: #20253a; stroke: #8ea4ff; }
+            .panel { stroke: #8ea4ff; }
+            .group { stroke: #9a9aa2; }
+            .line { stroke: #9a9aa2; }
+            .dot { fill: #8ea4ff; }
+            .head { fill: #9a9aa2; }
+        }
+    </style>
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path class="head" d="M0 0 L10 5 L0 10 z" />
+        </marker>
+    </defs>
+
+    <!-- 이슈와 레인 배치 -->
+    <rect class="box" x="240" y="12" width="240" height="56" rx="8" />
+    <text class="name" x="360" y="35" text-anchor="middle">열린 이슈</text>
+    <text class="sub" x="360" y="55" text-anchor="middle">작업 하나 = 이슈 하나</text>
+    <path class="line" d="M360 68 V94" marker-end="url(#arrow)" />
+
+    <rect class="box" x="160" y="96" width="400" height="56" rx="8" />
+    <text class="name" x="360" y="119" text-anchor="middle">레인 배치 스킬</text>
+    <text class="sub" x="360" y="139" text-anchor="middle">파일 겹침 · 의존 관계를 보고 병렬 레인으로 나눔</text>
+
+    <path class="line" d="M360 152 V172 M128 172 H592" />
+    <path class="line" d="M128 172 V202" marker-end="url(#arrow)" />
+    <path class="line" d="M360 172 V202" marker-end="url(#arrow)" />
+    <path class="line" d="M592 172 V202" marker-end="url(#arrow)" />
+
+    <!-- 레인 셋 -->
+    <rect class="group" x="8" y="186" width="704" height="324" rx="12" />
+    <text class="group-label" x="704" y="180" text-anchor="end">레인마다 병렬</text>
+
+    <!-- 레인 A -->
+    <rect class="box" x="24" y="204" width="208" height="56" rx="8" />
+    <text class="name" x="128" y="227" text-anchor="middle">worktree · 에이전트</text>
+    <text class="sub" x="128" y="247" text-anchor="middle">레인 A</text>
+    <path class="line" d="M128 260 V282" marker-end="url(#arrow)" />
+    <rect class="box" x="24" y="284" width="208" height="56" rx="8" />
+    <text class="name" x="128" y="307" text-anchor="middle">코드 편집</text>
+    <text class="sub" x="128" y="327" text-anchor="middle">편집 뒤 훅이 자동 실행</text>
+    <path class="line" d="M128 340 V362" marker-end="url(#arrow)" />
+    <rect class="box-accent" x="24" y="364" width="208" height="56" rx="8" />
+    <text class="name-accent" x="128" y="387" text-anchor="middle">검증 게이트</text>
+    <text class="sub" x="128" y="407" text-anchor="middle">통과해야 다음 단계로</text>
+    <path class="line" d="M128 420 V442" marker-end="url(#arrow)" />
+    <rect class="box" x="24" y="444" width="208" height="48" rx="8" />
+    <text class="name" x="128" y="473" text-anchor="middle">PR</text>
+
+    <!-- 레인 B -->
+    <rect class="box" x="256" y="204" width="208" height="56" rx="8" />
+    <text class="name" x="360" y="227" text-anchor="middle">worktree · 에이전트</text>
+    <text class="sub" x="360" y="247" text-anchor="middle">레인 B</text>
+    <path class="line" d="M360 260 V282" marker-end="url(#arrow)" />
+    <rect class="box" x="256" y="284" width="208" height="56" rx="8" />
+    <text class="name" x="360" y="307" text-anchor="middle">코드 편집</text>
+    <text class="sub" x="360" y="327" text-anchor="middle">편집 뒤 훅이 자동 실행</text>
+    <path class="line" d="M360 340 V362" marker-end="url(#arrow)" />
+    <rect class="box-accent" x="256" y="364" width="208" height="56" rx="8" />
+    <text class="name-accent" x="360" y="387" text-anchor="middle">검증 게이트</text>
+    <text class="sub" x="360" y="407" text-anchor="middle">통과해야 다음 단계로</text>
+    <path class="line" d="M360 420 V442" marker-end="url(#arrow)" />
+    <rect class="box" x="256" y="444" width="208" height="48" rx="8" />
+    <text class="name" x="360" y="473" text-anchor="middle">PR</text>
+
+    <!-- 레인 C -->
+    <rect class="box" x="488" y="204" width="208" height="56" rx="8" />
+    <text class="name" x="592" y="227" text-anchor="middle">worktree · 에이전트</text>
+    <text class="sub" x="592" y="247" text-anchor="middle">레인 C</text>
+    <path class="line" d="M592 260 V282" marker-end="url(#arrow)" />
+    <rect class="box" x="488" y="284" width="208" height="56" rx="8" />
+    <text class="name" x="592" y="307" text-anchor="middle">코드 편집</text>
+    <text class="sub" x="592" y="327" text-anchor="middle">편집 뒤 훅이 자동 실행</text>
+    <path class="line" d="M592 340 V362" marker-end="url(#arrow)" />
+    <rect class="box-accent" x="488" y="364" width="208" height="56" rx="8" />
+    <text class="name-accent" x="592" y="387" text-anchor="middle">검증 게이트</text>
+    <text class="sub" x="592" y="407" text-anchor="middle">통과해야 다음 단계로</text>
+    <path class="line" d="M592 420 V442" marker-end="url(#arrow)" />
+    <rect class="box" x="488" y="444" width="208" height="48" rx="8" />
+    <text class="name" x="592" y="473" text-anchor="middle">PR</text>
+
+    <!-- 통합 -->
+    <path class="line" d="M128 492 V528 H592 V492 M360 492 V528" />
+    <path class="line" d="M360 528 V550" marker-end="url(#arrow)" />
+    <rect class="box" x="160" y="552" width="400" height="56" rx="8" />
+    <text class="name" x="360" y="575" text-anchor="middle">PR 확인 · 통합</text>
+    <text class="sub" x="360" y="595" text-anchor="middle">레인별 PR을 차례로 develop에 머지</text>
+    <path class="line" d="M360 608 V630" marker-end="url(#arrow)" />
+    <rect class="box" x="264" y="632" width="192" height="44" rx="8" />
+    <text class="code" x="360" y="659" text-anchor="middle">develop</text>
+
+    <!-- 게이트가 막는 것 -->
+    <rect class="panel" x="8" y="700" width="704" height="148" rx="12" />
+    <text class="name-accent" x="28" y="728">검증 게이트가 막는 것</text>
+    <circle class="dot" cx="32" cy="752" r="3" />
+    <text class="body" x="42" y="757">정적 분석 · 유닛 테스트 실패 (Flutter · Functions)</text>
+    <circle class="dot" cx="32" cy="778" r="3" />
+    <text class="body" x="42" y="783">서버 금지 패턴 (예: HTTP 메서드 검사 누락)</text>
+    <circle class="dot" cx="400" cy="752" r="3" />
+    <text class="body" x="410" y="757">기획 문서를 고치고 변경 기록을 빠뜨림</text>
+    <circle class="dot" cx="400" cy="778" r="3" />
+    <text class="body" x="410" y="783">스킨 에셋 출력 규격 위반</text>
+    <text class="label-accent" x="28" y="814">게이트도 검증했다: 검사 대상을 일부러 지웠을 때 게이트가 실패하는지 확인</text>
+    <text class="label-accent" x="28" y="834">→ 아무것도 검사하지 못한 채 통과하던 서버 게이트 3곳을 찾아 고침</text>
+</svg>
