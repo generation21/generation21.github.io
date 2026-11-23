@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-홍승범의 포트폴리오 사이트(https://generation21.github.io/). Astro 6 정적 사이트이고 의존성은 `astro` 하나다. 문서·커밋 본문·PR 은 한국어로 쓴다.
+홍승범의 포트폴리오 사이트(https://generation21.github.io/). Astro 7 정적 사이트이고 의존성은 `astro` 하나다. 문서·커밋 본문·PR 은 한국어로 쓴다.
 
 GitHub 작업 절차(이슈 먼저, 브랜치·커밋, PR 본문, 레이블)는 `hsb` 플러그인 `github-conventions` 스킬이 갖는다. 아래 「브랜치 운영」「로컬 검사」「레이블」은 그 스킬과 `/hsb:*` 커맨드가 읽는 이 저장소의 값이다.
 
@@ -15,7 +15,7 @@ npm run build    # dist/ 에 정적 파일 생성
 npm run preview  # 빌드 결과 미리보기
 ```
 
-Node 22.12 이상 (`.nvmrc`). 테스트·린트는 없다. 포맷은 Prettier `tabWidth: 4` (`.prettierrc.json`).
+Node 22.23.4 이상 (`.nvmrc`, Astro 7 요구). CI 는 `withastro/action` 기본값인 Node 24 로 빌드한다. 테스트·린트는 없다. 포맷은 Prettier `tabWidth: 4` (`.prettierrc.json`).
 
 ## 브랜치 운영
 
