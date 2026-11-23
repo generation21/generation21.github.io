@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 796" width="720" height="796" role="img" aria-labelledby="title desc">
+    <title id="title">LLM 캐릭터 대화 서비스의 한 턴 처리 흐름</title>
+    <desc id="desc">사용자 메시지가 WebSocket으로 들어오면 설정 항목 조건 검사로 우선순위 상위 8개를 고르고, 캐릭터 상태와 대화 기억을 더해 프롬프트를 조립한다. 사용자가 고른 공급자로 스트림을 호출하고, 실패는 유형별로 재시도하거나 바로 실패시킨다. 응답은 청크 단위로 보내고, 연결이 끊겨도 백그라운드에서 끝까지 받아 OpenSearch에 저장한다. 메시지 100개마다 원문 근거가 붙은 스냅샷을 만들어 다음 턴의 대화 기억으로 쓴다.</desc>
+    <style>
+        text { font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif; fill: #1c1c1e; }
+        .name { font-size: 15px; font-weight: 600; }
+        .sub { font-size: 13px; fill: #6b6b70; }
+        .label { font-size: 13px; fill: #6b6b70; }
+        .label-accent { font-size: 13px; font-weight: 600; fill: #3b5bdb; }
+        .group-label { font-size: 13px; font-weight: 600; fill: #6b6b70; }
+        .box { fill: #ffffff; stroke: #6b6b70; stroke-opacity: 0.45; }
+        .box-accent { fill: #edf1ff; stroke: #3b5bdb; }
+        .group { fill: none; stroke: #6b6b70; stroke-opacity: 0.5; stroke-dasharray: 5 4; }
+        .line { fill: none; stroke: #6b6b70; stroke-width: 1.5; }
+        .line-accent { fill: none; stroke: #3b5bdb; stroke-width: 2; }
+        .dashed { stroke-dasharray: 5 4; }
+        .head { fill: #6b6b70; }
+        .head-accent { fill: #3b5bdb; }
+        @media (prefers-color-scheme: dark) {
+            text { fill: #ececee; }
+            .sub, .label, .group-label { fill: #9a9aa2; }
+            .label-accent { fill: #8ea4ff; }
+            .box { fill: #1c1c1f; stroke: #9a9aa2; }
+            .box-accent { fill: #20253a; stroke: #8ea4ff; }
+            .group { stroke: #9a9aa2; }
+            .line { stroke: #9a9aa2; }
+            .line-accent { stroke: #8ea4ff; }
+            .head { fill: #9a9aa2; }
+            .head-accent { fill: #8ea4ff; }
+        }
+    </style>
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path class="head" d="M0 0 L10 5 L0 10 z" />
+        </marker>
+        <marker id="arrow-accent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path class="head-accent" d="M0 0 L10 5 L0 10 z" />
+        </marker>
+    </defs>
+
+    <!-- 1. 사용자 메시지 -->
+    <rect class="box" x="140" y="12" width="240" height="56" rx="8" />
+    <text class="name" x="260" y="35" text-anchor="middle">사용자 메시지</text>
+    <text class="sub" x="260" y="55" text-anchor="middle">WebSocket</text>
+    <path class="line" d="M260 68 V96" marker-end="url(#arrow)" />
+
+    <!-- 2. 컨텍스트 구성 -->
+    <rect class="group" x="24" y="98" width="472" height="210" rx="12" />
+    <text class="group-label" x="40" y="122">컨텍스트 구성 · 벡터 검색이 아니라 조건 매칭</text>
+
+    <rect class="box" x="40" y="136" width="168" height="72" rx="8" />
+    <text class="name" x="124" y="160" text-anchor="middle">캐릭터 상태</text>
+    <text class="sub" x="124" y="181" text-anchor="middle">호감도</text>
+    <text class="sub" x="124" y="199" text-anchor="middle">배고픔 · 목마름</text>
+
+    <rect class="box" x="40" y="220" width="168" height="72" rx="8" />
+    <text class="name" x="124" y="244" text-anchor="middle">대화 기억</text>
+    <text class="sub" x="124" y="265" text-anchor="middle">최근 대화 20개</text>
+    <text class="sub" x="124" y="283" text-anchor="middle">요약 · 스냅샷</text>
+
+    <rect class="box" x="224" y="136" width="256" height="156" rx="8" />
+    <text class="name" x="352" y="160" text-anchor="middle">설정 항목 조건 검사</text>
+    <text class="sub" x="352" y="184" text-anchor="middle">키워드 · 정규식</text>
+    <text class="sub" x="352" y="203" text-anchor="middle">스토리 구간 (시작 ~ 끝)</text>
+    <text class="sub" x="352" y="222" text-anchor="middle">항상 포함 · 쿨다운 턴</text>
+    <text class="sub" x="352" y="241" text-anchor="middle">캐릭터 상태 · 호감도 조건</text>
+    <text class="label-accent" x="352" y="274" text-anchor="middle">→ 우선순위 상위 8개만</text>
+
+    <path class="line" d="M260 308 V336" marker-end="url(#arrow)" />
+
+    <!-- 3. 프롬프트 조립 -->
+    <rect class="box" x="40" y="338" width="440" height="56" rx="8" />
+    <text class="name" x="260" y="361" text-anchor="middle">프롬프트 조립</text>
+    <text class="sub" x="260" y="381" text-anchor="middle">system instruction + 설정 · 상태 · 스냅샷 + 대화 턴</text>
+    <path class="line" d="M260 394 V422" marker-end="url(#arrow)" />
+
+    <!-- 4. LLM 호출과 실패 처리 -->
+    <rect class="box" x="40" y="424" width="440" height="56" rx="8" />
+    <text class="name" x="260" y="447" text-anchor="middle">LLM 스트림 호출</text>
+    <text class="sub" x="260" y="467" text-anchor="middle">Gemini · OpenAI · Anthropic 중 사용자가 고른 모델</text>
+
+    <path class="line" d="M480 452 H498" marker-end="url(#arrow)" />
+    <rect class="box" x="500" y="392" width="212" height="128" rx="8" />
+    <text class="name" x="516" y="416">실패하면</text>
+    <text class="sub" x="516" y="440">빈 응답 → 최대 3회 재시도</text>
+    <text class="sub" x="516" y="461">408·409·429·5xx → 백오프</text>
+    <text class="sub" x="528" y="480">1s×2ⁿ · 상한 20s · 첫 청크 전만</text>
+    <text class="sub" x="516" y="504">그 밖의 오류 → 바로 실패</text>
+
+    <path class="line" d="M260 480 V518" marker-end="url(#arrow)" />
+
+    <!-- 5. 스트림 전송과 연결 끊김 -->
+    <rect class="box" x="40" y="520" width="440" height="56" rx="8" />
+    <text class="name" x="260" y="543" text-anchor="middle">응답을 청크 단위로 전송</text>
+    <text class="sub" x="260" y="563" text-anchor="middle">WebSocket → 게임 화면</text>
+
+    <path class="line dashed" d="M480 566 H498" marker-end="url(#arrow)" />
+    <rect class="box" x="500" y="536" width="212" height="76" rx="8" />
+    <text class="name" x="516" y="560">연결이 끊기면</text>
+    <text class="sub" x="516" y="582">남은 스트림을 백그라운드에서</text>
+    <text class="sub" x="516" y="600">끝까지 받는다</text>
+    <path class="line" d="M606 612 V634 H482" marker-end="url(#arrow)" />
+
+    <path class="line" d="M260 576 V604" marker-end="url(#arrow)" />
+
+    <!-- 6. 저장 -->
+    <rect class="box" x="40" y="606" width="440" height="56" rx="8" />
+    <text class="name" x="260" y="629" text-anchor="middle">OpenSearch에 대화 기록 저장</text>
+    <text class="sub" x="260" y="649" text-anchor="middle">연결이 끊긴 턴도 전체 응답을 저장</text>
+
+    <path class="line-accent dashed" d="M260 662 V698" marker-end="url(#arrow-accent)" />
+    <text class="label-accent" x="272" y="685">메시지 100개마다</text>
+
+    <!-- 7. 스냅샷 -->
+    <rect class="box-accent" x="40" y="700" width="440" height="56" rx="8" />
+    <text class="name" x="260" y="723" text-anchor="middle">스냅샷 생성 (Structured Output)</text>
+    <text class="sub" x="260" y="743" text-anchor="middle">약속 · 사용자가 밝힌 정보 · 관계 변화 + 원문 근거</text>
+
+    <!-- 다음 턴의 대화 기억으로 -->
+    <path class="line-accent dashed" d="M40 728 H12 V256 H38" marker-end="url(#arrow-accent)" />
+    <text class="label" x="40" y="784">스냅샷은 다음 턴부터 「대화 기억」으로 프롬프트에 들어갑니다.</text>
+</svg>
