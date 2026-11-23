@@ -13,7 +13,9 @@ const work = defineCollection({
         highlights: z.array(z.string()).length(3),
         stack: z.array(z.string()),
         order: z.number(),
-        // projects.json에서 이 사례로 대체되는 항목의 title (아카이브 목록에서 제외)
+        // false면 대표 사례 카드에 넣지 않고, 아카이브의 replaces 항목에서 이 페이지로 잇는다
+        featured: z.boolean().default(true),
+        // projects.json에서 이 사례에 해당하는 항목의 title (대표 사례면 아카이브 목록에서 제외)
         replaces: z.string(),
     }),
 });

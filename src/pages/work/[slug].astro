@@ -12,13 +12,23 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const { title, summary, period, company, role, highlights, stack } =
+const { title, summary, period, company, role, highlights, stack, featured } =
     entry.data;
 ---
 
 <Base title={title} description={summary}>
     <div class="case-header">
-        <a class="back" href="/#work">← 대표 사례</a>
+        {
+            featured ? (
+                <a class="back" href="/#work">
+                    ← 대표 사례
+                </a>
+            ) : (
+                <a class="back" href="/#projects">
+                    ← 그 밖의 프로젝트
+                </a>
+            )
+        }
         <h1>{title}</h1>
         <p class="muted">{company} · {period} · {role}</p>
         <p class="summary">{summary}</p>

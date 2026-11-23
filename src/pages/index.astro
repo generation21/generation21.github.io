@@ -6,10 +6,17 @@ import projects from "../data/projects.json";
 import papers from "../data/papers.json";
 import { contacts } from "../data/contacts";
 
-const work = (await getCollection("work")).sort(
-    (a, b) => a.data.order - b.data.order,
-);
+const allWork = await getCollection("work");
+const work = allWork
+    .filter((w) => w.data.featured)
+    .sort((a, b) => a.data.order - b.data.order);
 const replaced = new Set(work.map((w) => w.data.replaces));
+// 대표 사례가 아닌 상세 페이지: 아카이브 항목 title → 페이지 주소
+const detailPages = new Map(
+    allWork
+        .filter((w) => !w.data.featured)
+        .map((w) => [w.data.replaces, `/work/${w.id}/`]),
+);
 
 const categories = [
     { key: "LLM-Service", label: "LLM 서비스" },
@@ -128,7 +135,11 @@ const experience = [...about.office, ...about.school];
                             <li>
                                 <span class="when">{p.time}</span>
                                 <span class="what">
-                                    {p.link ? (
+                                    {detailPages.has(p.title) ? (
+                                        <a href={detailPages.get(p.title)}>
+                                            {p.title} →
+                                        </a>
+                                    ) : p.link ? (
                                         <a
                                             href={p.link}
                                             target="_blank"
@@ -138,6 +149,9 @@ const experience = [...about.office, ...about.school];
                                         </a>
                                     ) : (
                                         p.title
+                                    )}
+                                    {p.summary && (
+                                        <span class="desc">{p.summary}</span>
                                     )}
                                     <span class="sub">
                                         {p.task} · {p.from}
@@ -174,6 +188,9 @@ const experience = [...about.office, ...about.school];
                                     </a>
                                     {p.task && (
                                         <span class="sub">{p.task}</span>
+                                    )}
+                                    {p.summary && (
+                                        <span class="desc">{p.summary}</span>
                                     )}
                                 </span>
                             </li>
