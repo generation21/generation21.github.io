@@ -87,6 +87,8 @@ stack:
    - OpenAI·Anthropic·Gemini 클라이언트가 각자의 역할 형식(Gemini는 `model`)으로 변환하게 했습니다.
    - 출력 형식 지시문은 system instruction 끝으로 옮겼습니다.
 
+![수정 전에는 대화 기록을 「캐릭터: …」「사용자: …」 대본 텍스트로 이어 붙여 user 메시지 하나에 넣었고, 모델이 대본을 이어 쓰며 사용자 대사까지 지어냈다. 수정 후에는 user와 assistant 턴이 번갈아 쌓인 메시지 목록으로 넘겨 캐릭터 대사만 출력한다. 공통 LLM 클라이언트가 공급자마다 역할 형식으로 바꾸고(Gemini는 model), 출력 형식 지시문은 system instruction 끝에 둔다.](/image/work/llm-model-evaluation/speaker-mixing.svg)
+
 ### 반복 문장
 
 캐릭터가 같은 문장을 되풀이하는 문제에는 저장 전 필터를 넣었습니다.

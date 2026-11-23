@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 556" width="720" height="556" role="img" aria-labelledby="title desc">
+    <title id="title">화자 혼입의 원인: 대본 텍스트와 턴 구조 비교</title>
+    <desc id="desc">수정 전에는 대화 기록을 「캐릭터: …」「사용자: …」 대본 텍스트로 이어 붙여 user 메시지 하나에 넣었고, 모델이 대본을 이어 쓰며 사용자 대사까지 만들었다. 수정 후에는 대화 기록을 user와 assistant 턴이 번갈아 쌓인 메시지 목록으로 넘겨 캐릭터 대사만 출력한다. 공통 LLM 클라이언트가 턴 목록을 만들고 공급자마다 역할 형식으로 바꾸며(Gemini는 model), 출력 형식 지시문은 system instruction 끝에 둔다.</desc>
+    <style>
+        text { font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif; fill: #1c1c1e; }
+        .name { font-size: 15px; font-weight: 600; }
+        .name-accent { font-size: 15px; font-weight: 600; fill: #3b5bdb; }
+        .body { font-size: 14px; }
+        .sub { font-size: 13px; fill: #6b6b70; }
+        .label { font-size: 13px; fill: #6b6b70; }
+        .label-accent { font-size: 13px; font-weight: 600; fill: #3b5bdb; }
+        .code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 13px; }
+        .box { fill: #ffffff; stroke: #6b6b70; stroke-opacity: 0.45; }
+        .box-accent { fill: #edf1ff; stroke: #3b5bdb; }
+        .chip { fill: #fbfaf7; stroke: #6b6b70; stroke-opacity: 0.45; }
+        .chip-accent { fill: #edf1ff; stroke: #3b5bdb; stroke-opacity: 0.6; }
+        .mark { fill: none; stroke: #3b5bdb; stroke-width: 1.5; stroke-dasharray: 4 3; }
+        .rule { stroke: #6b6b70; stroke-opacity: 0.45; }
+        .line { fill: none; stroke: #6b6b70; stroke-width: 1.5; }
+        .head { fill: #6b6b70; }
+        @media (prefers-color-scheme: dark) {
+            text { fill: #ececee; }
+            .name-accent, .label-accent { fill: #8ea4ff; }
+            .sub, .label { fill: #9a9aa2; }
+            .box { fill: #1c1c1f; stroke: #9a9aa2; }
+            .box-accent { fill: #20253a; stroke: #8ea4ff; }
+            .chip { fill: #141416; stroke: #9a9aa2; }
+            .chip-accent { fill: #20253a; stroke: #8ea4ff; }
+            .mark { stroke: #8ea4ff; }
+            .rule { stroke: #9a9aa2; }
+            .line { stroke: #9a9aa2; }
+            .head { fill: #9a9aa2; }
+        }
+    </style>
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path class="head" d="M0 0 L10 5 L0 10 z" />
+        </marker>
+    </defs>
+
+    <!-- ===== 전 ===== -->
+    <text class="name" x="16" y="24">전 · 대화 기록을 대본 텍스트 하나로</text>
+
+    <rect class="box" x="16" y="40" width="336" height="44" rx="8" />
+    <rect class="chip" x="28" y="52" width="64" height="20" rx="4" />
+    <text class="code" x="60" y="66" text-anchor="middle">system</text>
+    <text class="body" x="104" y="67">캐릭터 설정 · 지시문</text>
+
+    <rect class="box" x="16" y="96" width="336" height="150" rx="8" />
+    <rect class="chip" x="28" y="108" width="48" height="20" rx="4" />
+    <text class="code" x="52" y="122" text-anchor="middle">user</text>
+    <text class="sub" x="88" y="123">메시지 하나</text>
+    <text class="body" x="28" y="154">캐릭터: 비가 오네. 우산 있어?</text>
+    <text class="body" x="28" y="178">사용자: 아니, 깜빡했어.</text>
+    <text class="body" x="28" y="202">캐릭터: 그럼 같이 쓰자.</text>
+    <text class="body" x="28" y="226">사용자: 고마워. 어디 갈까?</text>
+
+    <path class="line" d="M184 246 V280" marker-end="url(#arrow)" />
+    <text class="label" x="196" y="268">모델 출력</text>
+
+    <rect class="box" x="16" y="282" width="336" height="82" rx="8" />
+    <text class="body" x="28" y="310">캐릭터: 근처 카페는 어때?</text>
+    <rect class="mark" x="22" y="322" width="324" height="30" rx="4" />
+    <text class="body" x="28" y="342">사용자: 좋아, 가자!</text>
+    <text class="label-accent" x="16" y="388">✕ 대본을 이어 쓰며 사용자 대사까지 지어낸다</text>
+
+    <!-- ===== 후 ===== -->
+    <text class="name-accent" x="368" y="24">후 · 메시지 턴 구조</text>
+
+    <rect class="box" x="368" y="40" width="336" height="44" rx="8" />
+    <rect class="chip" x="380" y="52" width="64" height="20" rx="4" />
+    <text class="code" x="412" y="66" text-anchor="middle">system</text>
+    <text class="body" x="456" y="67">캐릭터 설정 · 지시문</text>
+    <text class="label-accent" x="700" y="67" text-anchor="end">+ 출력 형식 (끝)</text>
+
+    <rect class="box" x="368" y="96" width="336" height="30" rx="6" />
+    <rect class="chip-accent" x="376" y="101" width="84" height="20" rx="4" />
+    <text class="code" x="418" y="115" text-anchor="middle">assistant</text>
+    <text class="body" x="472" y="116">비가 오네. 우산 있어?</text>
+
+    <rect class="box" x="368" y="136" width="336" height="30" rx="6" />
+    <rect class="chip" x="376" y="141" width="84" height="20" rx="4" />
+    <text class="code" x="418" y="155" text-anchor="middle">user</text>
+    <text class="body" x="472" y="156">아니, 깜빡했어.</text>
+
+    <rect class="box" x="368" y="176" width="336" height="30" rx="6" />
+    <rect class="chip-accent" x="376" y="181" width="84" height="20" rx="4" />
+    <text class="code" x="418" y="195" text-anchor="middle">assistant</text>
+    <text class="body" x="472" y="196">그럼 같이 쓰자.</text>
+
+    <rect class="box" x="368" y="216" width="336" height="30" rx="6" />
+    <rect class="chip" x="376" y="221" width="84" height="20" rx="4" />
+    <text class="code" x="418" y="235" text-anchor="middle">user</text>
+    <text class="body" x="472" y="236">고마워. 어디 갈까?</text>
+
+    <path class="line" d="M536 246 V280" marker-end="url(#arrow)" />
+    <text class="label" x="548" y="268">모델 출력</text>
+
+    <rect class="box-accent" x="368" y="282" width="336" height="44" rx="8" />
+    <rect class="chip-accent" x="376" y="294" width="84" height="20" rx="4" />
+    <text class="code" x="418" y="308" text-anchor="middle">assistant</text>
+    <text class="body" x="472" y="309">근처 카페는 어때?</text>
+    <text class="label-accent" x="368" y="350">✓ 캐릭터 대사만 출력한다</text>
+
+    <!-- ===== 공통 클라이언트 ===== -->
+    <line class="rule" x1="16" y1="414" x2="704" y2="414" />
+    <text class="name" x="16" y="442">공통 LLM 클라이언트가 대화 기록을 턴 목록으로 만들고, 공급자마다 역할 형식으로 바꾼다</text>
+
+    <rect class="box" x="16" y="458" width="216" height="56" rx="8" />
+    <text class="name" x="124" y="481" text-anchor="middle">OpenAI</text>
+    <text class="code" x="124" y="502" text-anchor="middle">user / assistant</text>
+
+    <rect class="box" x="252" y="458" width="216" height="56" rx="8" />
+    <text class="name" x="360" y="481" text-anchor="middle">Anthropic</text>
+    <text class="code" x="360" y="502" text-anchor="middle">user / assistant</text>
+
+    <rect class="box-accent" x="488" y="458" width="216" height="56" rx="8" />
+    <text class="name" x="596" y="481" text-anchor="middle">Gemini</text>
+    <text class="code" x="596" y="502" text-anchor="middle">user / model</text>
+
+    <text class="label" x="16" y="542">출력 형식 지시문은 system instruction 끝으로 옮겼다.</text>
+</svg>
