@@ -11,7 +11,7 @@ npm run build    # dist/ 에 정적 파일 생성
 npm run preview  # 빌드 결과 미리보기
 ```
 
-Node 22.12 이상이 필요하다 (`.nvmrc`).
+Node 22.23.4 이상이 필요하다 (`.nvmrc`). Astro 7 이 이보다 낮은 버전에서는 빌드를 거부한다.
 
 ## 내용 고치기
 
