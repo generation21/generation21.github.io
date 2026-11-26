@@ -48,6 +48,7 @@ WIKI=/Volumes/Archive-HSB/projects/me-career-wiki
   git diff origin/master -- src/data src/content | grep '^+' | grep -v '^+++' \
     | rg -i 'gitlab|notion\.so|\b[0-9a-f]{7,40}\b|PR #|#[0-9]{3,}'
   ```
+- 「왜 이 방법인가」는 프로젝트 페이지의 「판단 이유」 절과 그 출처 카드(`wiki/sources/user-note-*-judgment*.md`)의 「쓸 표현」 안에서 쓰고 「쓰지 않을 것」은 옮기지 않는다. 판단 이유는 사용자 회고라 실험·측정 결과처럼 쓰지 않는다.
 - 사내 화면 캡처나 회사의 공개 허락이 있어야 하는 것은 `ext:capture` 레이블로 이슈를 남긴다.
 - `replaces`·`category`·`teckStack` 연결은 CLAUDE.md 「구조」, 검사는 「로컬 검사」를 따른다.
 - 사용자가 위키와 다르게 쓰기로 정한 것은 PR 본문에 적는다. 사이트 문구를 위키 근거로 되돌려 쓰지 않는다. 위키를 갱신해야 하면 사용자에게 알린다 (그쪽 `career-ingest` 스킬이 맡는다).
