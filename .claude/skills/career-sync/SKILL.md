@@ -1,6 +1,6 @@
 ---
 name: career-sync
-description: career-wiki(/Users/hsb/Desktop/projects/career-wiki)에서 경력·프로젝트 근거를 찾아 포트폴리오 사이트 문구를 쓰거나, 위키와 사이트를 대조해 새로 넣을 것·어긋난 것·낡은 것을 찾는다. "경력 찾아줘", "포트폴리오에 업데이트할 거 있어?", "위키 보고 사이트 갱신해줘"처럼 요청할 때나, 사례·경력·프로젝트·논문 항목을 새로 쓰거나 고칠 때 쓴다.
+description: career-wiki(/Volumes/Archive-HSB/projects/me-career-wiki)에서 경력·프로젝트 근거를 찾아 포트폴리오 사이트 문구를 쓰거나, 위키와 사이트를 대조해 새로 넣을 것·어긋난 것·낡은 것을 찾는다. "경력 찾아줘", "포트폴리오에 업데이트할 거 있어?", "위키 보고 사이트 갱신해줘"처럼 요청할 때나, 사례·경력·프로젝트·논문 항목을 새로 쓰거나 고칠 때 쓴다.
 ---
 
 # career-wiki 로 경력 찾기·대조
@@ -8,7 +8,7 @@ description: career-wiki(/Users/hsb/Desktop/projects/career-wiki)에서 경력·
 사이트에 실리는 경력 사실의 원본은 career-wiki 다 (CLAUDE.md 「경력 자료」). 이 스킬은 위키에서 근거를 찾아 사이트 파일로 옮기는 절차다. **위키는 읽기만 한다.**
 
 ```bash
-WIKI=/Users/hsb/Desktop/projects/career-wiki
+WIKI=/Volumes/Archive-HSB/projects/me-career-wiki
 ```
 
 ## 어디와 어디를 대조하는가
